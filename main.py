@@ -1,11 +1,14 @@
-
 from funcoes import adicionar_musica, listar_musicas, marcar_como_tocada, remover_musica
+from data.db_connection import init_db
+from data.auth import verificar_login
 
+def login():
+    print("\n=== Login Loopify ===")
+    email = input("Email: ")
+    password = input("Senha: ")
+    return verificar_login(email, password)
 
 def menu():
-    """
-    Exibe o menu principal do programa e controla as interações do usuário.
-    """
     while True:
         print("\n=== Loopify - Gerenciador de Playlist ===")
         print("1 - Adicionar música")
@@ -48,6 +51,10 @@ def menu():
         else:
             print(" Opção inválida! Tente novamente.")
 
-
 if __name__ == "__main__":
-    menu()
+    init_db()  
+    success, _ = login()  
+    if success:  
+        menu()  
+    else:
+        print("Acesso negado. Encerrando o programa.")

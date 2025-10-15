@@ -4,9 +4,6 @@ from data.dados import playlist, contador_id
 
 
 def adicionar_musica(titulo, artista, prazo_final=None, urgencia=False):
-    """
-    Adiciona uma nova música à playlist.
-    """
     global contador_id
     musica = {
         "id": contador_id,
@@ -23,9 +20,6 @@ def adicionar_musica(titulo, artista, prazo_final=None, urgencia=False):
 
 
 def listar_musicas():
-    """
-    Lista todas as músicas da playlist com seus detalhes.
-    """
     if not playlist:
         print("A playlist está vazia! Adicione músicas você goste")
         return
@@ -40,9 +34,6 @@ def listar_musicas():
 
 
 def marcar_como_tocada(id_musica):
-    """
-    Marca uma música da playlist como tocada.
-    """
     for musica in playlist:
         if musica["id"] == id_musica:
             musica["status"] = "Tocada"
@@ -52,9 +43,6 @@ def marcar_como_tocada(id_musica):
 
 
 def remover_musica(id_musica):
-    """
-    Remove uma música da playlist.
-    """
     for musica in playlist:
         if musica["id"] == id_musica:
             playlist.remove(musica)
